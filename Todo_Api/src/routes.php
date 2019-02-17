@@ -8,8 +8,8 @@ use Slim\Http\Response;
 $app->get('/', function (Request $request, Response $response, array $args) {
 
     $endpoints = [
-        'all tasks' => $this->api['api_url'] . '/tasks',
-        'single task' => $this->api['api_url'] . 'tasks/{task_id}',
+        'all tasks' => $this->api['api_url'] . '/todos',
+        'single task' => $this->api['api_url'] . 'todos/{id}',
 
     ];
 
