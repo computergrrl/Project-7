@@ -56,10 +56,10 @@ class Todo
    public function deleteTask($task_id)
    {
       $sql = $this->database->prepare('DELETE FROM tasks WHERE id = :id');
-      $sql->bindParam('id' , $data['id']);
+      $sql->bindParam('id' , $task_id);
       $sql->execute();
       return ['message' => 'The course was deleted successfully'];
-  
+
 
    }
 
