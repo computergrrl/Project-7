@@ -7,22 +7,27 @@ use Slim\Http\Response;
 
 $app->get('/', function (Request $request, Response $response, array $args) {
 
+//how to access endpoints (will appear on base_url page)
     $endpoints = [
         'all tasks' => $this->api['api_url'] . '/todos',
         'single task' => $this->api['api_url'] . 'todos/{id}',
 
     ];
 
+/*display endpoints as well as version number and full list of
+the current existing tasks*/
     $result = [
 
-      'tasks' => $this->todo->getTasks(),
       'endpoints' => $endpoints,
-      'version' => $this->api['version']
+      'version' => $this->api['version'],
+      'tasks' => $this->todo->getTasks()
 
     ];
 
      return $response->withJson($result, 200, JSON_PRETTY_PRINT );
 });
+
+
 /*************************create a routing group  ****************************/
 $app->group('/api/v1/todos', function() use($app) {
 

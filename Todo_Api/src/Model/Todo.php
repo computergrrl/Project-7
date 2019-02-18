@@ -19,7 +19,7 @@ class Todo
      return $sql->fetchAll();
 
    }
-
+/******get single task by id ********/
    public function getTask ($task_id)
    {
      $sql = $this->database->prepare('SELECT * FROM tasks WHERE id = :id');
@@ -29,7 +29,7 @@ class Todo
 
    }
 
-
+/******create a new task ********/
    public function createTask($data)
    {
       $sql = $this->database->prepare('INSERT INTO tasks (task, status) VALUES (:task, :status)');
@@ -40,7 +40,7 @@ class Todo
 
 
    }
-
+/******Update an existing task ********/
    public function updateTask($data)
    {
       $sql = $this->database->prepare('UPDATE tasks SET task = :task, status = :status WHERE id = :id');
@@ -52,12 +52,14 @@ class Todo
 
 
    }
-
+   /******delete a task  ********/
    public function deleteTask($task_id)
    {
       $sql = $this->database->prepare('DELETE FROM tasks WHERE id = :id');
       $sql->bindParam('id' , $task_id);
       $sql->execute();
+
+      //after deleting task return the message
       return ['message' => 'The course was deleted successfully'];
 
 
